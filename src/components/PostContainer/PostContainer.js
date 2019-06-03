@@ -2,6 +2,7 @@ import React from 'react';
 import './PostContainer.css';
 import PostHeader from './PostHeader/PostHeader';
 import PostImage from './PostImage/PostImage';
+import CommentSection from './CommentSection/CommentSection';
 
 const postContainer = props => {
 	//console.log(props);
@@ -9,7 +10,7 @@ const postContainer = props => {
 		<div className="PostContainer">
 			<PostHeader username={props.post.username} thumbnail={props.post.thumbnailUrl} />
 			<PostImage postImage={props.post.imageUrl} />
-			<div>CommentSection</div>
+			<CommentSection likes={props.post.likes} timestamp={props.post.timestamp} comments={props.post.comments} />
 		</div>
 	);
 };
