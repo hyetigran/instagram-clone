@@ -1,0 +1,28 @@
+.PostContainer {
+	display: flex;
+	flex-flow: column;
+	margin: auto;
+	margin-bottom: 4%;
+	border: 1px solid grey;
+	width: 60%;
+	justify-content: center;
+	border-radius: 4px;
+}
+
+.PostHeader {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.ImageContainer {
+	height: 30px;
+	width: auto;
+	border-radius: 50%;
+	margin: 2%;
+}
+
+.ImageContainer img {
+	height: 100%;
+	width: auto;
+	border-radius: 50%;
+}
