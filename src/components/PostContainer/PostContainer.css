@@ -14,15 +14,25 @@
 	justify-content: flex-start;
 	align-items: center;
 }
-.ImageContainer {
+.ThumbnailContainer {
 	height: 30px;
 	width: auto;
 	border-radius: 50%;
 	margin: 2%;
 }
 
-.ImageContainer img {
+.ThumbnailContainer img {
 	height: 100%;
 	width: auto;
 	border-radius: 50%;
+}
+
+.ImageContainer {
+	width: 100%;
+}
+
+.ImageContainer img {
+	display: block;
+	width: 100%;
+	height: auto;
 }

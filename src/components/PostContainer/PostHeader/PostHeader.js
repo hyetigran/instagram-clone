@@ -6,7 +6,7 @@ const postHeader = props => {
 	console.log(thumbnail);
 	return (
 		<div className="PostHeader">
-			<div className="ImageContainer">
+			<div className="ThumbnailContainer">
 				<img src={thumbnail} alt="thumbnail" />
 			</div>
 			<div>{username}</div>
