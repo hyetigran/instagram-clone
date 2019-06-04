@@ -3,7 +3,7 @@ import '../CommentSection.css';
 
 const commentInput = props => {
 	return (
-		<div>
+		<div className="CommentInput">
 			<input type="text" placeholder="Add a comment..." />
 		</div>
 	);
