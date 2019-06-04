@@ -1,0 +1,25 @@
+.CommentSection {
+	display: flex;
+}
+
+.CommentList {
+	display: flex;
+	flex-flow: column;
+	align-content: flex-start;
+	margin-left: 1.5%;
+}
+.IconsWrapper {
+	display: flex;
+	flex-flow: row;
+}
+.Icons {
+	margin: 1.5%;
+}
+
+.CommentText {
+	padding: 5px 0;
+}
+
+span {
+	font-weight: bold;
+}
