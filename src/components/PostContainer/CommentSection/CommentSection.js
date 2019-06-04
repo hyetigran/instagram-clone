@@ -9,8 +9,8 @@ const commentSection = props => {
 	return (
 		<div>
 			<CommentList likes={likes} comments={comments} />
-			<div>Some JSX Time</div>
-			<div>Some JSX Input</div>
+			<CommentTime timestamp={timestamp} />
+			<CommentInput />
 		</div>
 	);
 };
