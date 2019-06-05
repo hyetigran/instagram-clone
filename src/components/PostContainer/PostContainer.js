@@ -11,7 +11,15 @@ const postContainer = props => {
 		<div className="PostContainer">
 			<PostHeader username={props.post.username} thumbnail={props.post.thumbnailUrl} />
 			<PostImage postImage={props.post.imageUrl} />
-			<CommentSection likes={props.post.likes} timestamp={props.post.timestamp} comments={props.post.comments} />
+			<CommentSection
+				inputChange={props.inputChange}
+				likes={props.post.likes}
+				timestamp={props.post.timestamp}
+				comments={props.post.comments}
+				addComment={props.addComment}
+				postId={props.post.id}
+				form={props.form}
+			/>
 		</div>
 	);
 };

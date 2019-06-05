@@ -1,11 +1,31 @@
 import React from 'react';
 import '../CommentSection.css';
 
-const commentInput = props => {
+const CommentInput = props => {
+	const onCommentChange = event => {
+		props.inputChange(event.target.value, 'commentValue');
+	};
+
+	const onCommentAdd = event => {
+		const { postId, addComment } = props;
+		addComment(postId);
+	};
+
+	const onSubmit = event => {
+		event.preventDefault();
+		onCommentAdd();
+	};
+
 	return (
-		<div className="CommentInput">
-			<input type="text" placeholder="Add a comment..." />
-		</div>
+		<form className="CommentInput" onSubmit={onSubmit}>
+			<input
+				type="text"
+				placeholder="Add a comment..."
+				onChange={onCommentChange}
+				value={props.form.commentValue}
+			/>
+			<button style={{ display: 'none' }} type="submit" />
+		</form>
 	);
 };
-export default commentInput;
+export default CommentInput;

@@ -3,7 +3,6 @@ import '../PostContainer.css';
 
 const postHeader = props => {
 	const { username, thumbnail } = props;
-	console.log(thumbnail);
 	return (
 		<div className="PostHeader">
 			<div className="ThumbnailContainer">

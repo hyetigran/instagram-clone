@@ -10,7 +10,7 @@ const commentSection = props => {
 		<div>
 			<CommentList likes={likes} comments={comments} />
 			<CommentTime timestamp={timestamp} />
-			<CommentInput />
+			<CommentInput {...props} />
 		</div>
 	);
 };
