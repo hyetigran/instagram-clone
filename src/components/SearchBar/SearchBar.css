@@ -2,4 +2,38 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	border-bottom: 1px solid grey;
+	margin: 20px 5px;
+}
+
+.LogoWrapper {
+	height: 60px;
+	width: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.LogoWrapper i {
+	padding-right: 10px;
+	height: inherit;
+	position: relative;
+	z-index: 1;
+	width: 40px;
+}
+.LogoWrapper i:before {
+	position: absolute;
+	right: 0;
+	bottom: 25%;
+	height: 80%;
+	border-right: 1px solid grey;
+}
+.LogoWrapper img {
+	height: 100%;
+	width: auto;
+	padding-left: 10px;
+}
+
+.NavigationWrapper i {
+	height: inherit;
+	margin-left: 10px;
 }
