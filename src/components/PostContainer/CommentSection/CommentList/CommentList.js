@@ -14,8 +14,8 @@ const commentList = props => {
 				</div>
 			</div>
 			<div>{likes} likes</div>
-			{comments.map(comment => (
-				<div className="CommentText">
+			{comments.map((comment, idx) => (
+				<div key={idx} className="CommentText">
 					<span>{comment.username}</span> {comment.text}
 				</div>
 			))}

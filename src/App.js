@@ -5,9 +5,14 @@ import PostContainer from './components/PostContainer/PostContainer';
 import dummyData from './dummy-data';
 import uuid from 'uuid';
 
+const initialCommentState = {
+	commentValue: ''
+};
 const initialState = {
 	posts: dummyData,
-	isLoading: true
+	isLoading: true,
+	form: initialCommentState,
+	currentPostId: null
 };
 
 class App extends React.Component {
@@ -21,7 +26,7 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<SearchBar />
-				{this.state.posts.map(post => <PostContainer key={post.id} post={post} />)}
+				{this.state.posts.map(post => <PostContainer key={post.timestamp} post={post} />)}
 			</div>
 		);
 	}
