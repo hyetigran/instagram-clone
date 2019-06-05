@@ -2,12 +2,13 @@ import React from 'react';
 import '../CommentSection.css';
 
 const commentList = props => {
-	const { likes, comments } = props;
+	const { likes, comments, addLike, isLiked } = props;
+	const liked = isLiked ? <i className="fas fa-heart" /> : <i className="far fa-heart" />;
 	return (
 		<div className="CommentList">
 			<div className="IconsWrapper">
-				<div className="Icons">
-					<i className="far fa-heart" />
+				<div onClick={addLike} className="Icons">
+					{liked}
 				</div>
 				<div className="Icons">
 					<i className="far fa-comment" />

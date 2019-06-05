@@ -15,9 +15,9 @@ const searchBar = props => {
 				</form>
 			</div>
 			<div className="NavigationWrapper">
-				<i class="far fa-compass" />
+				<i className="far fa-compass" />
 				<i className="far fa-comment" />
-				<i class="far fa-user" />
+				<i className="far fa-user" />
 			</div>
 		</div>
 	);

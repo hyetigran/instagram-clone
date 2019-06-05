@@ -25,7 +25,8 @@ const initialState = {
 	form: initialCommentState,
 	currentPostId: null,
 	search: '',
-	isSearching: false
+	isSearching: false,
+	isLiked: false
 };
 
 class App extends React.Component {
@@ -58,6 +59,10 @@ class App extends React.Component {
 			}
 		});
 	};
+	addLike = () => {
+		let newLike = this.state.posts.like + 1
+		this.setState({ isLiked: !this.state.isLiked});
+	};
 	inputChange = (value, field) => {
 		this.setState(state => ({
 			form: {
@@ -87,16 +92,8 @@ class App extends React.Component {
 						form={this.state.form}
 						inputChange={this.inputChange}
 						addComment={this.addComment}
-					/>
-				))}
-
-				{this.state.posts.map(post => (
-					<PostContainer
-						key={post.timestamp}
-						post={post}
-						form={this.state.form}
-						inputChange={this.inputChange}
-						addComment={this.addComment}
+						addLike={this.addLike}
+						isLiked={this.state.isLiked}
 					/>
 				))}
 			</div>
