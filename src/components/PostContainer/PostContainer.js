@@ -6,7 +6,6 @@ import CommentSection from './CommentSection/CommentSection';
 import pt from 'prop-types';
 
 const postContainer = props => {
-	//console.log(props);
 	return (
 		<div className="PostContainer">
 			<PostHeader username={props.post.username} thumbnail={props.post.thumbnailUrl} />
@@ -19,7 +18,7 @@ const postContainer = props => {
 				addComment={props.addComment}
 				postId={props.post.id}
 				form={props.form}
-				addLike={props.addLike}
+				toggleLike={props.toggleLike}
 				isLiked={props.isLiked}
 			/>
 		</div>

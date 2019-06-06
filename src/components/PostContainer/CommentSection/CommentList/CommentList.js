@@ -2,13 +2,12 @@ import React from 'react';
 import '../CommentSection.css';
 
 const commentList = props => {
-	const { likes, comments, addLike, isLiked, postId } = props;
+	const { likes, comments, toggleLike, isLiked, postId } = props;
 
 	const onLikeClick = event => {
 		event.preventDefault();
-		addLike(postId);
+		toggleLike(postId);
 	};
-	console.log(likes);
 	return (
 		<div className="CommentList">
 			<div className="IconsWrapper">

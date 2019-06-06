@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import SearchBar from './components/SearchBar/SearchBar';
-import PostContainer from './components/PostContainer/PostContainer';
+
 import dummyData from './dummy-data';
 import uuid from 'uuid';
+import PostsPage from './components/PostsPage';
 
 const preprocessData = data =>
 	dummyData.map(post => ({
@@ -24,7 +24,6 @@ const initialState = {
 	posts: preprocessData(dummyData),
 	isLoading: true,
 	form: initialCommentState,
-	//currentPostId: null,
 	search: ''
 };
 
@@ -58,7 +57,8 @@ class App extends React.Component {
 			}
 		});
 	};
-	addLike = postId => {
+
+	toggleLike = postId => {
 		this.setState({
 			posts: this.state.posts.map(
 				post =>
@@ -87,26 +87,17 @@ class App extends React.Component {
 	};
 
 	render() {
-		console.log(this.state.posts);
-		let filteredPosts = this.state.posts.filter(post => {
-			return post.username.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
-		});
-
 		return (
-			<div className="App">
-				<SearchBar inputSearch={this.inputSearchChange} search={this.state.search} />
-				{filteredPosts.map(post => (
-					<PostContainer
-						key={post.timestamp}
-						post={post}
-						form={this.state.form}
-						inputChange={this.inputChange}
-						addComment={this.addComment}
-						addLike={this.addLike}
-						isLiked={post.isLiked}
-					/>
-				))}
-			</div>
+			<PostsPage
+				inputSearch={this.inputSearchChange}
+				search={this.state.search}
+				posts={this.state.posts}
+				form={this.state.form}
+				inputChange={this.inputChange}
+				addComment={this.addComment}
+				toggleLike={this.toggleLike}
+				isLiked={this.state.isLiked}
+			/>
 		);
 	}
 }
