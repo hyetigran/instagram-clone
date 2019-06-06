@@ -4,6 +4,8 @@ import './App.css';
 import dummyData from './dummy-data';
 import uuid from 'uuid';
 import PostsPage from './components/PostsPage';
+import withAuthenticate from './components/authentication/withAuthenticate';
+import Login from './components/login/Login';
 
 const preprocessData = data =>
 	dummyData.map(post => ({
@@ -24,7 +26,8 @@ const initialState = {
 	posts: preprocessData(dummyData),
 	isLoading: true,
 	form: initialCommentState,
-	search: ''
+	search: '',
+	username: ''
 };
 
 class App extends React.Component {
@@ -87,8 +90,9 @@ class App extends React.Component {
 	};
 
 	render() {
+		const ComponentWithAuthenticate = withAuthenticate(PostsPage)(Login);
 		return (
-			<PostsPage
+			<ComponentWithAuthenticate
 				inputSearch={this.inputSearchChange}
 				search={this.state.search}
 				posts={this.state.posts}
