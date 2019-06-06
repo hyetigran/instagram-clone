@@ -5,10 +5,10 @@ import CommentTime from './CommentTime/CommentTime';
 import CommentInput from './CommentInput/CommentInput';
 
 const commentSection = props => {
-	const { likes, timestamp, comments } = props;
+	const { likes, timestamp, comments, addLike, isLiked } = props;
 	return (
 		<div>
-			<CommentList likes={likes} comments={comments} />
+			<CommentList likes={likes} comments={comments} addLike={addLike} isLiked={isLiked} />
 			<CommentTime timestamp={timestamp} />
 			<CommentInput {...props} />
 		</div>

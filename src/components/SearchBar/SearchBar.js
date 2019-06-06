@@ -1,13 +1,24 @@
 import React from 'react';
 import './SearchBar.css';
+import logo from '../../assets/images/Instagram-text.png';
 
 const searchBar = props => {
 	return (
 		<div className="SearchBarContainer">
-			<div>Logo</div>
-			<div>BrandName</div>
-			<div>Search Bar</div>
-			<div>Navigation</div>
+			<div className="LogoWrapper">
+				<i className="fab fa-instagram" />
+				<img src={logo} alt="Instagram" />
+			</div>
+			<div className="SearchForm">
+				<form>
+					<input type="text" placeholder="Search" value={props.search} onChange={props.inputSearch} />
+				</form>
+			</div>
+			<div className="NavigationWrapper">
+				<i className="far fa-compass" />
+				<i className="far fa-comment" />
+				<i className="far fa-user" />
+			</div>
 		</div>
 	);
 };

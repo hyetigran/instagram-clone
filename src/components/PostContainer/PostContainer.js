@@ -19,6 +19,8 @@ const postContainer = props => {
 				addComment={props.addComment}
 				postId={props.post.id}
 				form={props.form}
+				addLike={props.addLike}
+				isLiked={props.isLiked}
 			/>
 		</div>
 	);
