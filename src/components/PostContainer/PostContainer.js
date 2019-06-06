@@ -33,7 +33,8 @@ postContainer.propTypes = {
 		imageUrl: pt.string.isRequired,
 		likes: pt.number.isRequired,
 		comments: pt.array.isRequired,
-		timestamp: pt.string.isRequired
+		timestamp: pt.string.isRequired,
+		isLiked: pt.bool.isRequired
 	})
 };
 

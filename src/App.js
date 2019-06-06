@@ -9,6 +9,7 @@ const preprocessData = data =>
 	dummyData.map(post => ({
 		...post,
 		id: uuid(),
+		isLiked: false,
 		comments: post.comments.map(comment => ({
 			...comment,
 			id: uuid()
@@ -23,10 +24,8 @@ const initialState = {
 	posts: preprocessData(dummyData),
 	isLoading: true,
 	form: initialCommentState,
-	currentPostId: null,
-	search: '',
-	isSearching: false,
-	isLiked: false
+	//currentPostId: null,
+	search: ''
 };
 
 class App extends React.Component {
@@ -59,10 +58,21 @@ class App extends React.Component {
 			}
 		});
 	};
-	addLike = () => {
-		let newLike = this.state.posts.like + 1
-		this.setState({ isLiked: !this.state.isLiked});
+	addLike = postId => {
+		this.setState({
+			posts: this.state.posts.map(
+				post =>
+					post.id === postId
+						? {
+								...post,
+								likes: post.likes + (post.isLiked ? -1 : 1),
+								isLiked: !post.isLiked
+							}
+						: post
+			)
+		});
 	};
+
 	inputChange = (value, field) => {
 		this.setState(state => ({
 			form: {
@@ -74,10 +84,10 @@ class App extends React.Component {
 
 	inputSearchChange = event => {
 		this.setState({ search: event.target.value.substr(0, 20) });
-		this.setState({ isSearching: true });
 	};
 
 	render() {
+		console.log(this.state.posts);
 		let filteredPosts = this.state.posts.filter(post => {
 			return post.username.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
 		});
@@ -93,7 +103,7 @@ class App extends React.Component {
 						inputChange={this.inputChange}
 						addComment={this.addComment}
 						addLike={this.addLike}
-						isLiked={this.state.isLiked}
+						isLiked={post.isLiked}
 					/>
 				))}
 			</div>
