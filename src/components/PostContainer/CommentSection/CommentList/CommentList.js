@@ -1,5 +1,28 @@
 import React from 'react';
-import '../CommentSection.css';
+import styled from 'styled-components';
+
+const CommentListDiv = styled.div`
+	display: flex;
+	flex-flow: column;
+	align-content: flex-start;
+	margin-left: 1.5%;
+
+	.IconsWrapper {
+		display: flex;
+		flex-flow: row;
+
+		.Icons {
+			margin: 1.5%;
+		}
+	}
+	.CommentText {
+		padding: 5px 0;
+
+		span {
+			font-weight: bold;
+		}
+	}
+`;
 
 const commentList = props => {
 	const { likes, comments, toggleLike, isLiked, postId } = props;
@@ -9,7 +32,7 @@ const commentList = props => {
 		toggleLike(postId);
 	};
 	return (
-		<div className="CommentList">
+		<CommentListDiv>
 			<div className="IconsWrapper">
 				<div onClick={onLikeClick} className="Icons">
 					{isLiked ? <i className="fas fa-heart" /> : <i className="far fa-heart" />}
@@ -24,7 +47,7 @@ const commentList = props => {
 					<span>{comment.username}</span> {comment.text}
 				</div>
 			))}
-		</div>
+		</CommentListDiv>
 	);
 };
 export default commentList;

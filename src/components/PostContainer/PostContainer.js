@@ -1,5 +1,4 @@
 import React from 'react';
-import './PostContainer.css';
 import PostHeader from './PostHeader/PostHeader';
 import PostImage from './PostImage/PostImage';
 import CommentSection from './CommentSection/CommentSection';
@@ -7,14 +6,14 @@ import pt from 'prop-types';
 import styled from 'styled-components';
 
 const PostContainerDiv = styled.div`
-  display: flex;
-  flex-flow: column;
-  margin: auto;
-  margin-bottom: 4%;
-  border: 1px solid grey;
-  width: 60%;
-  justify-content: center;
-  border-radius: 4px;
+	display: flex;
+	flex-flow: column;
+	margin: auto;
+	margin-bottom: 4%;
+	border: 1px solid grey;
+	width: 60%;
+	justify-content: center;
+	border-radius: 4px;
 `;
 
 const postContainer = props => {

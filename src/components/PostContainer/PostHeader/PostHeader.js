@@ -1,11 +1,11 @@
 import React from 'react';
-import '../PostContainer.css';
 import styled from 'styled-components';
 
 const PostHeaderDiv = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+
 	.ThumbnailContainer {
 		height: 30px;
 		width: auto;
