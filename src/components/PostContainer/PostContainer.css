@@ -1,4 +1,4 @@
-.PostContainer {
+/* .PostContainer {
 	display: flex;
 	flex-flow: column;
 	margin: auto;
@@ -7,9 +7,9 @@
 	width: 60%;
 	justify-content: center;
 	border-radius: 4px;
-}
+} */
 
-.PostHeader {
+/* .PostHeader {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -25,9 +25,9 @@
 	height: 100%;
 	width: auto;
 	border-radius: 50%;
-}
+} */
 
-.ImageContainer {
+/* .ImageContainer {
 	width: 100%;
 }
 
@@ -35,4 +35,4 @@
 	display: block;
 	width: 100%;
 	height: auto;
-}
+} */

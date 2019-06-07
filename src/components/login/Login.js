@@ -9,14 +9,14 @@ class Login extends React.Component {
 			password: ''
 		};
 	}
-	inputChange = event => this.setState({ ...this.state, [event.target.name]: event.target.value });
+	inputLoginChange = event => this.setState({ ...this.state, [event.target.name]: event.target.value });
 
 	loginHandler = async event => {
 		event.preventDefault();
 		const { username, password } = this.state;
 		if (username === 'Tigran' || password === '12345') {
 			await localStorage.setItem('username', username);
-			window.location.reload();
+			//window.location.reload();
 		}
 	};
 	render() {
@@ -27,7 +27,7 @@ class Login extends React.Component {
 					type="text"
 					name="username"
 					value={username}
-					onChange={this.inputChange}
+					onChange={this.inputLoginChange}
 					className="InputUsername"
 					placeholder="Username"
 				/>
@@ -35,7 +35,7 @@ class Login extends React.Component {
 					type="password"
 					name="password"
 					value={password}
-					onChange={this.inputChange}
+					onChange={this.inputLoginChange}
 					className="InputPassword"
 					placeholder="password"
 				/>
