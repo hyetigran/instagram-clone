@@ -1,14 +1,24 @@
 import React from 'react';
-import './PostContainer.css';
 import PostHeader from './PostHeader/PostHeader';
 import PostImage from './PostImage/PostImage';
 import CommentSection from './CommentSection/CommentSection';
 import pt from 'prop-types';
+import styled from 'styled-components';
+
+const PostContainerDiv = styled.div`
+	display: flex;
+	flex-flow: column;
+	margin: auto;
+	margin-bottom: 4%;
+	border: 1px solid grey;
+	width: 60%;
+	justify-content: center;
+	border-radius: 4px;
+`;
 
 const postContainer = props => {
-	//console.log(props);
 	return (
-		<div className="PostContainer">
+		<PostContainerDiv>
 			<PostHeader username={props.post.username} thumbnail={props.post.thumbnailUrl} />
 			<PostImage postImage={props.post.imageUrl} />
 			<CommentSection
@@ -19,10 +29,10 @@ const postContainer = props => {
 				addComment={props.addComment}
 				postId={props.post.id}
 				form={props.form}
-				addLike={props.addLike}
+				toggleLike={props.toggleLike}
 				isLiked={props.isLiked}
 			/>
-		</div>
+		</PostContainerDiv>
 	);
 };
 
@@ -33,7 +43,8 @@ postContainer.propTypes = {
 		imageUrl: pt.string.isRequired,
 		likes: pt.number.isRequired,
 		comments: pt.array.isRequired,
-		timestamp: pt.string.isRequired
+		timestamp: pt.string.isRequired,
+		isLiked: pt.bool.isRequired
 	})
 };
 

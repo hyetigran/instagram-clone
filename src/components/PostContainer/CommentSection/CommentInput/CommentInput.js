@@ -1,5 +1,13 @@
 import React from 'react';
-import '../CommentSection.css';
+import styled from 'styled-components';
+
+const CommentInputForm = styled.form`
+	input {
+		width: 100%;
+		height: 30px;
+		margin-top: 10px;
+	}
+`;
 
 const CommentInput = props => {
 	const onCommentChange = event => {
@@ -17,7 +25,7 @@ const CommentInput = props => {
 	};
 
 	return (
-		<form className="CommentInput" onSubmit={onSubmit}>
+		<CommentInputForm onSubmit={onSubmit}>
 			<input
 				type="text"
 				placeholder="Add a comment..."
@@ -25,7 +33,7 @@ const CommentInput = props => {
 				value={props.form.commentValue}
 			/>
 			<button style={{ display: 'none' }} type="submit" />
-		</form>
+		</CommentInputForm>
 	);
 };
 export default CommentInput;

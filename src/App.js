@@ -1,14 +1,17 @@
 import React from 'react';
 import './App.css';
-import SearchBar from './components/SearchBar/SearchBar';
-import PostContainer from './components/PostContainer/PostContainer';
+
 import dummyData from './dummy-data';
 import uuid from 'uuid';
+import PostsPage from './components/PostsPage';
+import withAuthenticate from './components/authentication/withAuthenticate';
+import Login from './components/login/Login';
 
 const preprocessData = data =>
 	dummyData.map(post => ({
 		...post,
 		id: uuid(),
+		isLiked: false,
 		comments: post.comments.map(comment => ({
 			...comment,
 			id: uuid()
@@ -23,10 +26,8 @@ const initialState = {
 	posts: preprocessData(dummyData),
 	isLoading: true,
 	form: initialCommentState,
-	currentPostId: null,
 	search: '',
-	isSearching: false,
-	isLiked: false
+	username: ''
 };
 
 class App extends React.Component {
@@ -59,10 +60,22 @@ class App extends React.Component {
 			}
 		});
 	};
-	addLike = () => {
-		let newLike = this.state.posts.like + 1
-		this.setState({ isLiked: !this.state.isLiked});
+
+	toggleLike = postId => {
+		this.setState({
+			posts: this.state.posts.map(
+				post =>
+					post.id === postId
+						? {
+								...post,
+								likes: post.likes + (post.isLiked ? -1 : 1),
+								isLiked: !post.isLiked
+							}
+						: post
+			)
+		});
 	};
+
 	inputChange = (value, field) => {
 		this.setState(state => ({
 			form: {
@@ -74,29 +87,21 @@ class App extends React.Component {
 
 	inputSearchChange = event => {
 		this.setState({ search: event.target.value.substr(0, 20) });
-		this.setState({ isSearching: true });
 	};
 
 	render() {
-		let filteredPosts = this.state.posts.filter(post => {
-			return post.username.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
-		});
-
+		const ComponentWithAuthenticate = withAuthenticate(PostsPage)(Login);
 		return (
-			<div className="App">
-				<SearchBar inputSearch={this.inputSearchChange} search={this.state.search} />
-				{filteredPosts.map(post => (
-					<PostContainer
-						key={post.timestamp}
-						post={post}
-						form={this.state.form}
-						inputChange={this.inputChange}
-						addComment={this.addComment}
-						addLike={this.addLike}
-						isLiked={this.state.isLiked}
-					/>
-				))}
-			</div>
+			<ComponentWithAuthenticate
+				inputSearch={this.inputSearchChange}
+				search={this.state.search}
+				posts={this.state.posts}
+				form={this.state.form}
+				inputChange={this.inputChange}
+				addComment={this.addComment}
+				toggleLike={this.toggleLike}
+				isLiked={this.state.isLiked}
+			/>
 		);
 	}
 }
